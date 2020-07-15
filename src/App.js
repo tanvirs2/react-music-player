@@ -1,25 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {useEffect} from 'react';
 import './App.css';
+import MainView from "./main/pages/MainView";
+import Thumbnail from "./thumbnail/pages/Thumbnail";
 
 function App() {
+
+  const loadScripts = () => {
+    const script = document.createElement('script');
+    script.src = 'js/scripts.js';
+    script.async = true;
+
+    document.body.appendChild(script);
+  };
+
+  useEffect(()=>{
+    loadScripts();
+
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+
+      <MainView>
+        <Thumbnail/>
+      </MainView>
+
+    </>
   );
 }
 
